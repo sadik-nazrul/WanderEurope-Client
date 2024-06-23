@@ -7,11 +7,23 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        jakarta: "'Plus Jakarta Sans', sans-serif"
+        primary: "'Plus Jakarta Sans', sans-serif",
+        secondary: "'Yesteryear', cursive",
       },
       colors: {
         primary: "#4DA528",
-        secondary: "#0F0F2D"
+        secondary: "#1C231F"
+      },
+      backgroundImage: {
+        keyframes: {
+          zoomIn: {
+            '0%': { transform: 'scale(1)' },
+            '100%': { transform: 'scale(1.1)' },
+          },
+        },
+        animation: {
+          zoomIn: 'zoomIn 10s infinite alternate',
+        },
       }
     },
   },

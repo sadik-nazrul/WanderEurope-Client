@@ -5,9 +5,9 @@ import Footer from "../components/Footer";
 
 const MainLayout = () => {
     return (
-        <div className="font-jakarta">
+        <div className="font-primary">
             <Header />
-            <div className="min-h-[calc(100vh-417px)] container mx-auto">
+            <div className="min-h-[calc(100vh-417px)]">
                 <Outlet></Outlet>
             </div>
             <Footer />
