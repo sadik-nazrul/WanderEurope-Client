@@ -5,7 +5,7 @@ const Footer = () => {
     return (
         <div className="py-10 bg-secondary text-white">
             <div className="container mx-auto">
-                <div className="grid grid-cols-3 gap-4 pb-4">
+                <div className="grid lg:grid-cols-3 gap-4 pb-4 p-5">
                     <div className="space-y-2">
                         <h2 className="text-2xl font-bold">WanderEurope</h2>
                         <p>At WanderEurope, we curate unique and memorable tours across Europe’s iconic and hidden gems, ensuring an unforgettable travel experience.</p>
