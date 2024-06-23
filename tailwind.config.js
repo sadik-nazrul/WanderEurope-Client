@@ -5,8 +5,21 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        jakarta: "'Plus Jakarta Sans', sans-serif"
+      },
+      colors: {
+        primary: "#4DA528",
+        secondary: "#0F0F2D"
+      }
+    },
   },
-  plugins: [],
+  plugins: [
+    require('daisyui'),
+  ],
+  daisyui: {
+    themes: ["light", "night"],
+  },
 }
 
