@@ -12,7 +12,7 @@ export default {
       },
       colors: {
         primary: "#4DA528",
-        secondary: "#1C231F"
+        secondary: "#0e172a"
       },
       backgroundImage: {
         keyframes: {

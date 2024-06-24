@@ -1,9 +1,17 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import './header.css'
+import { AuthContext } from "../../providers/AuthProvider";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+import { FaCircleUser } from "react-icons/fa6";
+import { FaSignOutAlt } from "react-icons/fa";
+import { Tooltip } from "react-tooltip";
 
 
 const Header = () => {
+    // Context
+    const { user, logOut } = useContext(AuthContext);
     // Header scrolling animation state
     const [scrolling, setScrolling] = useState(false);
 
@@ -21,6 +29,17 @@ const Header = () => {
             setScrolling(false);
         }
     };
+
+    // User LogOut
+    const userLogout = () => {
+        logOut()
+            .then()
+            .catch(error => {
+                const code = error.code;
+                const rePlace = code.replace('auth/', '');
+                toast.error(rePlace);
+            });
+    }
 
     // Theme change
     const [theme, setTheme] = useState('light');
@@ -61,7 +80,7 @@ const Header = () => {
         </li>
     </>
     return (
-        <div className={scrolling ? `navbar-scroll navbar lg:px-20 sticky top-0` : `navbar lg:px-20 sticky top-0 z-[99]`}>
+        <div className={scrolling ? `navbar-scroll navbar lg:px-20 sticky top-0` : `navbar lg:px-20 sticky top-0 z-[99] shadow`}>
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -79,7 +98,43 @@ const Header = () => {
                 </ul>
             </div>
             <div className="navbar-end space-x-4">
-                <Link className="px-5 py-2 bg-primary text-white rounded" to='/login'>Login</Link>
+                {
+                    user ? <>
+                        <img
+                            className="user-image w-10 rounded-full object-cover"
+                            src={user.photoURL} alt={user?.displayName}
+                        />
+                        <Link
+                            onClick={userLogout} className="logout"
+                            to='/'>
+                            <FaSignOutAlt size={30} />
+                        </Link>
+                        <Tooltip
+                            anchorSelect=".logout"
+                            content="Log Out"
+                            offset="20"
+                            place="bottom"
+                        />
+                        <Tooltip
+                            anchorSelect=".user-image"
+                            content={user.displayName}
+                            offset="20"
+                            float={true}
+                        />
+                    </> :
+                        <>
+                            {/* <Link className="px-5 py-2 bg-blue-500 text-white rounded-md hover:scale-110" to='/register'>Register</Link> */}
+                            <Link to='/login' className="login">
+                                <FaCircleUser size={30} />
+                            </Link>
+                            <Tooltip
+                                anchorSelect=".login"
+                                content="LogIn"
+                                offset="20"
+                                place="bottom"
+                            />
+                        </>
+                }
 
                 {/* Theme controller */}
                 <label className="swap swap-rotate">
@@ -95,6 +150,10 @@ const Header = () => {
 
                 </label>
             </div>
+            <ToastContainer
+                position="top-center"
+                autoClose={2000}
+            ></ToastContainer>
         </div>
     );
 };
