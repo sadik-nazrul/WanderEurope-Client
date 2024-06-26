@@ -35,10 +35,12 @@ const Place = ({ place }) => {
             </div>
             <Link
                 className='flex items-center justify-center rounded gap-2 px-4 py-1 bg-secondary text-white'
-                to={`places/${_id}`}>
+                to={`/places/${_id}`}>
                 <span>View Details</span>
                 <FaArrowAltCircleRight size={20} />
             </Link>
+
+            
         </div>
     );
 };

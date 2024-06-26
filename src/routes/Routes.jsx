@@ -11,6 +11,7 @@ import PrivateRouts from "./PrivateRoutes";
 import MyPlaces from "../pages/MyPlaces";
 import UpdatePlace from "../pages/UpdatePlace";
 import AllPlaces from "../pages/AllPlaces";
+import PlaceBycountry from "../pages/PlaceBycountry";
 
 
 export const router = createBrowserRouter([
@@ -21,12 +22,18 @@ export const router = createBrowserRouter([
         children: [
             {
                 path: '/',
-                element: <Home />
+                element: <Home />,
+                loader: () => fetch('https://wandereurope-server.vercel.app/countries')
             },
             {
                 path: '/toures',
                 element: <AllPlaces />,
-                loader: () => fetch('http://localhost:5007/places/')
+                loader: () => fetch('https://wandereurope-server.vercel.app/places/')
+            },
+            {
+                path: 'places/place/:countryname',
+                element: <PlaceBycountry />,
+                loader: ({params}) => fetch(`https://wandereurope-server.vercel.app/places/place/${params.countryname}`)
             },
             {
                 path: '/login',
@@ -52,21 +59,21 @@ export const router = createBrowserRouter([
                 element: <PrivateRouts>
                     <UpdatePlace />
                 </PrivateRouts>,
-                loader: ({ params }) => fetch(`http://localhost:5007/places/user/${params.usernm}/${params.id}`)
+                loader: ({ params }) => fetch(`https://wandereurope-server.vercel.app/places/user/${params.usernm}/${params.id}`)
             },
             {
                 path: '/places/:id',
                 element: <PrivateRouts>
                     <PlaceDetails />
                 </PrivateRouts>,
-                loader: ({ params }) => fetch(`http://localhost:5007/places/${params.id}`)
+                loader: ({ params }) => fetch(`https://wandereurope-server.vercel.app/places/${params.id}`)
             },
             {
                 path: '/myplaces/user/:usernm',
                 element: <PrivateRouts>
                     <MyPlaces />
                 </PrivateRouts>,
-                loader: ({ params }) => fetch(`http://localhost:5007/places/user/${params.usernm}`)
+                loader: ({ params }) => fetch(`https://wandereurope-server.vercel.app/places/user/${params.usernm}`)
             }
         ]
     }

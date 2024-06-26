@@ -23,7 +23,7 @@ const UpdatePlace = () => {
         const updatePlace = { thumb, spotName, country, location, cost, seasonality, time, visitor, shortDesc };
         console.log(updatePlace);
 
-        fetch(`http://localhost:5007/updateplace/${_id}`, {
+        fetch(`https://wandereurope-server.vercel.app/updateplace/${_id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'

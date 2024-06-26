@@ -4,10 +4,10 @@ import { Link, useLoaderData } from "react-router-dom";
 
 const MyPlaces = () => {
     const loadedPlace = useLoaderData();
-    console.log(loadedPlace);
+    
     // Delete handler
     const handleDelete = id => {
-        fetch(`http://localhost:5007/places/${id}`, {
+        fetch(`https://wandereurope-server.vercel.app/places/${id}`, {
             method: 'DELETE'
         })
         .then(res => res.json())

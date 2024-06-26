@@ -27,7 +27,7 @@ const AddPlaces = () => {
         const addPlace = { thumb, spotName, country, location, cost, seasonality, time, visitor, shortDesc, userEmail, userName };
         console.log(addPlace);
 
-        fetch('http://localhost:5007/places', {
+        fetch('https://wandereurope-server.vercel.app/places', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

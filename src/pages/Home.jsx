@@ -1,13 +1,17 @@
-import CountryGallery from "../components/CountryGallery";
+import { useLoaderData } from "react-router-dom";
 import Hero from "../components/Hero";
+import Countries from "../components/Countries";
 
 
 const Home = () => {
+    const countries = useLoaderData();
     
     return (
         <div>
             <Hero />
-            <CountryGallery />
+            <div>
+                <Countries countries={countries} />
+            </div>
         </div>
     );
 };
