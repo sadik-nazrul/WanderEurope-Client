@@ -9,6 +9,7 @@ import AddPlaces from "../pages/AddPlaces";
 import PlaceDetails from "../pages/PlaceDetails/";
 import PrivateRouts from "./PrivateRoutes";
 import MyPlaces from "../pages/MyPlaces";
+import UpdatePlace from "../pages/UpdatePlace";
 
 
 export const router = createBrowserRouter([
@@ -40,6 +41,11 @@ export const router = createBrowserRouter([
                 element: <PrivateRouts>
                     <AddPlaces />
                 </PrivateRouts>
+            },
+            {
+                path: '/myplaces/user/:usernm/:id',
+                element: <UpdatePlace />,
+                loader: ({params}) => fetch(`http://localhost:5007/places/user/${params.usernm}/${params.id}`)
             },
             {
                 path: '/places/:id',
