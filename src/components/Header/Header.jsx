@@ -12,6 +12,7 @@ import { Tooltip } from "react-tooltip";
 const Header = () => {
     // Context
     const { user, logOut } = useContext(AuthContext);
+    
     // Header scrolling animation state
     const [scrolling, setScrolling] = useState(false);
 
@@ -102,8 +103,9 @@ const Header = () => {
                     user ? <>
                         <img
                             className="user-image w-10 rounded-full object-cover"
-                            src={user.photoURL} alt={user?.displayName}
+                            src={user?.photoURL} alt={user?.displayName}
                         />
+                        <Link to={`myplaces/user/${user?.displayName}`}>My places</Link>
                         <Link
                             onClick={userLogout} className="logout"
                             to='/'>

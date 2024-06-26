@@ -3,11 +3,12 @@ import MainLayout from "../layouts/MainLayout";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
-import ProtectedRoute from "./ProtectedRoute";
 import ErrorPage from "../pages/ErrorPage";
 import AllreadyLogin from "../pages/AllreadyLogin";
 import AddPlaces from "../pages/AddPlaces";
 import PlaceDetails from "../pages/PlaceDetails/";
+import PrivateRouts from "./PrivateRoutes";
+import MyPlaces from "../pages/MyPlaces";
 
 
 export const router = createBrowserRouter([
@@ -23,32 +24,36 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/login',
-                element: (
-                    <ProtectedRoute redirectTo='/logedin'>
-                        <Login />
-                    </ProtectedRoute>
-                )
+                element: <Login />
             },
             {
                 path: '/register',
-                element: (
-                    <ProtectedRoute redirectTo='/logedin'>
-                        <Register />
-                    </ProtectedRoute>
-                )
+                element: <Register />
+                   
             },
             {
-                path: '/logedin',
+                path: '/loggedin',
                 element: <AllreadyLogin />
             },
             {
                 path: '/addplaces',
-                element: <AddPlaces />
+                element: <PrivateRouts>
+                    <AddPlaces />
+                </PrivateRouts>
             },
             {
                 path: '/places/:id',
-                element: <PlaceDetails />,
-                loader: ({params}) => fetch(`http://localhost:5007/places/${params.id}`)
+                element: <PrivateRouts>
+                    <PlaceDetails />
+                </PrivateRouts> ,
+                loader: ({ params }) => fetch(`http://localhost:5007/places/${params.id}`)
+            },
+            {
+                path: '/myplaces/user/:usernm',
+                element: <PrivateRouts>
+                    <MyPlaces />
+                </PrivateRouts>,
+                loader: ({ params }) => fetch(`http://localhost:5007/places/user/${params.usernm}`)
             }
         ]
     }

@@ -5,6 +5,7 @@ import { useLoaderData } from "react-router-dom";
 
 const PlaceDetails = () => {
     const loadPlace = useLoaderData();
+    console.log(loadPlace);
     const { thumb, spotName, country, location, cost, seasonality, shortDesc } = loadPlace;
     return (
         <div className="grid lg:grid-cols-4 gap-5 container mx-auto lg:py-10 p-5">

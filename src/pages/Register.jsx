@@ -8,6 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { updateProfile } from "firebase/auth";
 import auth from "../firebase/firebase.config";
 import Loading from "../components/Loading";
+import AllreadyLogin from "./AllreadyLogin";
 
 
 const Register = () => {
@@ -86,53 +87,57 @@ const Register = () => {
     }
     return (
         <div className="flex flex-col justify-center items-center lg:p-10 p-5">
-            <div>
-                <h2 className="text-2xl font-secondary font-semibold text-primary text-center py-4">Create Your Account</h2>
-            </div>
-            <form onSubmit={handleEmailPassRegister} className="space-y-4 lg:w-1/2 w-full">
-                <label className="input input-bordered flex items-center gap-2">
-                    <FaUser className=" opacity-50"></FaUser>
-                    <input type="text" className="grow" placeholder="Name" name="name" />
-                </label>
-                <label className="input input-bordered flex items-center gap-2">
-                    <FaImage className=" opacity-50"></FaImage>
-                    <input type="text" className="grow" placeholder="Photo_Url" name="photo" />
-                </label>
-                <label className="input input-bordered flex items-center gap-2">
-                    <FaEnvelope className=" opacity-50"></FaEnvelope>
-                    <input type="email" className="grow" placeholder="Email" name="email" required />
-                </label>
-                <label className="relative input input-bordered flex items-center gap-2">
-                    <FaKey className=" opacity-50"></FaKey>
-                    <input
-                        type={showPassword ? "text" : "password"}
-                        className="grow"
-                        placeholder="password"
-                        name="password"
-                    />
-                    <span
-                        className="absolute top-4 right-3 cursor-pointer"
-                        onClick={() => { setShowPasword(!showPassword) }}>
-                        {showPassword ? <FaEyeSlash></FaEyeSlash> : <FaRegEye></FaRegEye>}
-                    </span>
-                </label>
-                <input className="w-full cursor-pointer bg-primary py-2 text-white rounded" type="submit" value="Register" />
-            </form>
-            <div className="pt-4">
-                <p>If you have an account! <Link to='/login' className="text-primary underline font-semibold">Login</Link></p>
-            </div>
-            <div className="flex items-center justify-center gap-4 py-4">
-                <button onClick={() => handleRegister(googleSignIn)} className="px-5 py-2 bg-primary text-white flex items-center gap-2 rounded">
-                    <FaGoogle />Google
-                </button>
-                <button onClick={() => handleRegister(twitterSignIn)} className="px-5 py-2 bg-primary text-white flex items-center gap-2 rounded">
-                    <FaTwitter />Twitter
-                </button>
-            </div>
-            <ToastContainer
-                position="top-center"
-                autoClose={2000}
-            ></ToastContainer>
+            {
+                user ? <AllreadyLogin></AllreadyLogin> : <>
+                    <div>
+                        <h2 className="text-2xl font-secondary font-semibold text-primary text-center py-4">Create Your Account</h2>
+                    </div>
+                    <form onSubmit={handleEmailPassRegister} className="space-y-4 lg:w-1/2 w-full">
+                        <label className="input input-bordered flex items-center gap-2">
+                            <FaUser className=" opacity-50"></FaUser>
+                            <input type="text" className="grow" placeholder="Name" name="name" />
+                        </label>
+                        <label className="input input-bordered flex items-center gap-2">
+                            <FaImage className=" opacity-50"></FaImage>
+                            <input type="text" className="grow" placeholder="Photo_Url" name="photo" />
+                        </label>
+                        <label className="input input-bordered flex items-center gap-2">
+                            <FaEnvelope className=" opacity-50"></FaEnvelope>
+                            <input type="email" className="grow" placeholder="Email" name="email" required />
+                        </label>
+                        <label className="relative input input-bordered flex items-center gap-2">
+                            <FaKey className=" opacity-50"></FaKey>
+                            <input
+                                type={showPassword ? "text" : "password"}
+                                className="grow"
+                                placeholder="password"
+                                name="password"
+                            />
+                            <span
+                                className="absolute top-4 right-3 cursor-pointer"
+                                onClick={() => { setShowPasword(!showPassword) }}>
+                                {showPassword ? <FaEyeSlash></FaEyeSlash> : <FaRegEye></FaRegEye>}
+                            </span>
+                        </label>
+                        <input className="w-full cursor-pointer bg-primary py-2 text-white rounded" type="submit" value="Register" />
+                    </form>
+                    <div className="pt-4">
+                        <p>If you have an account! <Link to='/login' className="text-primary underline font-semibold">Login</Link></p>
+                    </div>
+                    <div className="flex items-center justify-center gap-4 py-4">
+                        <button onClick={() => handleRegister(googleSignIn)} className="px-5 py-2 bg-primary text-white flex items-center gap-2 rounded">
+                            <FaGoogle />Google
+                        </button>
+                        <button onClick={() => handleRegister(twitterSignIn)} className="px-5 py-2 bg-primary text-white flex items-center gap-2 rounded">
+                            <FaTwitter />Twitter
+                        </button>
+                    </div>
+                    <ToastContainer
+                        position="top-center"
+                        autoClose={2000}
+                    ></ToastContainer>
+                </>
+            }
         </div>
     );
 };

@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 import { FaArrowAltCircleRight } from 'react-icons/fa';
 
 
-const Place = ({ place, places, setPlaces }) => {
+const Place = ({ place }) => {
 
     // AOS initialize
     useEffect(() => {
@@ -44,7 +44,5 @@ const Place = ({ place, places, setPlaces }) => {
 };
 Place.propTypes = {
     place: PropTypes.object,
-    places: PropTypes.array,
-    setPlaces: PropTypes.func
 }
 export default Place;
