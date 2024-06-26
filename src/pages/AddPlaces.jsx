@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { FaDollarSign } from "react-icons/fa";
-import { FaFile, FaFlag, FaImage, FaLocationDot } from "react-icons/fa6";
+import { FaCalendar, FaFile, FaFlag, FaImage, FaLocationDot } from "react-icons/fa6";
 import { AuthContext } from "../providers/AuthProvider";
 import Swal from 'sweetalert2'
 
@@ -18,11 +18,13 @@ const AddPlaces = () => {
         const location = form.location.value;
         const cost = form.cost.value;
         const seasonality = form.seasonality.value;
+        const time = form.time.value;
+        const visitor = form.visitor.value;
         const shortDesc = form.shortDesc.value;
         const userEmail = user.email;
         const userName = user.displayName;
 
-        const addPlace = { thumb, spotName, country, location, cost, seasonality, shortDesc, userEmail, userName };
+        const addPlace = { thumb, spotName, country, location, cost, seasonality, time, visitor, shortDesc, userEmail, userName };
         console.log(addPlace);
 
         fetch('http://localhost:5007/places', {
@@ -34,12 +36,12 @@ const AddPlaces = () => {
         })
             .then(res => res.json())
             .then(data => {
-                if(data.insertedId){
+                if (data.insertedId) {
                     Swal.fire({
                         title: "Great Job!",
                         text: "Your Place Successfully added",
                         icon: "success"
-                      });
+                    });
                 }
             })
             .catch(err => console.error(err))
@@ -81,6 +83,17 @@ const AddPlaces = () => {
 
                     <label className="input input-bordered flex items-center gap-2">
                         <input type="text" className="grow" placeholder="Summer, Winter" name="seasonality" />
+                    </label>
+                </div>
+
+                <div className="grid grid-cols-2 gap-4 py-2">
+                    <label className="input input-bordered flex items-center gap-2">
+                        <FaCalendar className="opacity-50"></FaCalendar>
+                        <input type="text" className="grow" placeholder="& days" name="time" />
+                    </label>
+
+                    <label className="input input-bordered flex items-center gap-2">
+                        <input type="text" className="grow" placeholder="10000+ per year" name="visitor" />
                     </label>
                 </div>
 

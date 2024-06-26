@@ -5,7 +5,7 @@ import { useLoaderData } from "react-router-dom";
 
 const UpdatePlace = () => {
     const loadPlace = useLoaderData();
-    const { _id,thumb, spotName, country, location, cost, seasonality, shortDesc } = loadPlace;
+    const { _id, thumb, spotName, country, location, cost, seasonality, time, visitor, shortDesc } = loadPlace;
 
     const handleUpdatePlace = e => {
         e.preventDefault();
@@ -16,9 +16,11 @@ const UpdatePlace = () => {
         const location = form.location.value;
         const cost = form.cost.value;
         const seasonality = form.seasonality.value;
+        const time = form.time.value;
+        const visitor = form.visitor.value;
         const shortDesc = form.shortDesc.value;
 
-        const updatePlace = { thumb, spotName, country, location, cost, seasonality, shortDesc };
+        const updatePlace = { thumb, spotName, country, location, cost, seasonality, time, visitor, shortDesc };
         console.log(updatePlace);
 
         fetch(`http://localhost:5007/updateplace/${_id}`, {
@@ -78,6 +80,17 @@ const UpdatePlace = () => {
 
                     <label className="input input-bordered flex items-center gap-2">
                         <input type="text" className="grow" placeholder="Summer, Winter" name="seasonality" defaultValue={seasonality} />
+                    </label>
+                </div>
+
+                <div className="grid grid-cols-2 gap-4 py-2">
+                    <label className="input input-bordered flex items-center gap-2">
+                        <FaDollarSign className="opacity-50"></FaDollarSign>
+                        <input type="text" className="grow" placeholder="Average Cost" name="time" defaultValue={time} />
+                    </label>
+
+                    <label className="input input-bordered flex items-center gap-2">
+                        <input type="text" className="grow" placeholder="Summer, Winter" name="visitor" defaultValue={visitor} />
                     </label>
                 </div>
 

@@ -10,6 +10,7 @@ import PlaceDetails from "../pages/PlaceDetails/";
 import PrivateRouts from "./PrivateRoutes";
 import MyPlaces from "../pages/MyPlaces";
 import UpdatePlace from "../pages/UpdatePlace";
+import AllPlaces from "../pages/AllPlaces";
 
 
 export const router = createBrowserRouter([
@@ -20,7 +21,11 @@ export const router = createBrowserRouter([
         children: [
             {
                 path: '/',
-                element: <Home />,
+                element: <Home />
+            },
+            {
+                path: '/toures',
+                element: <AllPlaces />,
                 loader: () => fetch('http://localhost:5007/places/')
             },
             {
@@ -30,7 +35,7 @@ export const router = createBrowserRouter([
             {
                 path: '/register',
                 element: <Register />
-                   
+
             },
             {
                 path: '/loggedin',
@@ -44,14 +49,16 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/myplaces/user/:usernm/:id',
-                element: <UpdatePlace />,
-                loader: ({params}) => fetch(`http://localhost:5007/places/user/${params.usernm}/${params.id}`)
+                element: <PrivateRouts>
+                    <UpdatePlace />
+                </PrivateRouts>,
+                loader: ({ params }) => fetch(`http://localhost:5007/places/user/${params.usernm}/${params.id}`)
             },
             {
                 path: '/places/:id',
                 element: <PrivateRouts>
                     <PlaceDetails />
-                </PrivateRouts> ,
+                </PrivateRouts>,
                 loader: ({ params }) => fetch(`http://localhost:5007/places/${params.id}`)
             },
             {

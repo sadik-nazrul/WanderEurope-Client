@@ -5,6 +5,16 @@ import { Link, useLoaderData } from "react-router-dom";
 const MyPlaces = () => {
     const loadedPlace = useLoaderData();
     console.log(loadedPlace);
+    // Delete handler
+    const handleDelete = id => {
+        fetch(`http://localhost:5007/places/${id}`, {
+            method: 'DELETE'
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+        })
+    }
     return (
         <div className="container mx-auto lg:py-10 p-5">
             <table className="w-full">
@@ -26,7 +36,7 @@ const MyPlaces = () => {
                             <td className="border-r px-5 py-2">{place.country}</td>
                             <td className="border-r px-5 py-2">{place.cost}</td>
                             <td className="border-r px-5 py-2"><Link to={`${place._id}`}><FaPencil /></Link></td>
-                            <td className="px-5 py-2"><FaTrash /></td>
+                            <td className="px-5 py-2"><FaTrash className="cursor-pointer" onClick={()=> handleDelete(place._id)} /></td>
                         </tr>
                     </tbody>)
                 }
