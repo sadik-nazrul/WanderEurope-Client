@@ -3,8 +3,11 @@ import Hero from "../components/Hero";
 import Countries from "../components/Countries";
 
 
+
 const Home = () => {
     const countries = useLoaderData();
+    // AOS initialize
+    
     
     return (
         <div>

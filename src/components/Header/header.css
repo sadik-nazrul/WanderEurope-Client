@@ -5,4 +5,10 @@
     z-index: 99;
     /* Add additional styles for the scrolled state */
   }
+  .theme{
+    margin-left: 0 !important;
+  }
+  .dropdown{
+    margin-left: 0 !important;
+  }
   

@@ -2,14 +2,13 @@
 import { useContext, useState } from "react";
 import { FaEnvelope, FaEyeSlash, FaGoogle, FaKey, FaRegEye, FaTwitter } from "react-icons/fa6";
 import { AuthContext } from "../providers/AuthProvider";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import AllreadyLogin from "./AllreadyLogin";
 
 const Login = () => {
     const { googleSignIn, twitterSignIn, emailPassSignIn, user } = useContext(AuthContext);
-    const location = useLocation();
     const navigate = useNavigate();
 
     // Show password state
@@ -20,7 +19,7 @@ const Login = () => {
         signInMethod()
             .then(() => {
                 // Navigate
-                navigate(location?.state ? location?.state : '/');
+                navigate('/');
             })
             .catch();
     };
@@ -35,7 +34,7 @@ const Login = () => {
                 e.target.reset();
 
                 // Navigate
-                navigate(location?.state ? location?.state : '/');
+                navigate('/');
             })
             .catch(error => {
                 const code = error.code;

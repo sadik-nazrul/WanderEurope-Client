@@ -1,11 +1,13 @@
 import { FaDollarSign, FaFile, FaFlag, FaImage, FaLocationDot } from "react-icons/fa6";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 // import Swal from "sweetalert2";
 
 
 const UpdatePlace = () => {
     const loadPlace = useLoaderData();
     const { _id, thumb, spotName, country, location, cost, seasonality, time, visitor, shortDesc } = loadPlace;
+    const navigate = useNavigate();
 
     const handleUpdatePlace = e => {
         e.preventDefault();
@@ -32,16 +34,23 @@ const UpdatePlace = () => {
         })
             .then(res => res.json())
             .then(data => {
-                // if(data.insertedId){
-                //     Swal.fire({
-                //         title: "Great Job!",
-                //         text: "Your Place Successfully added",
-                //         icon: "success"
-                //       });
-                // }
-                console.log(data);
+                if(data.modifiedCount){
+                    Swal.fire({
+                        title: "Great Job!",
+                        text: "Your Place Successfully Updated",
+                        icon: "success"
+                      });
+                      navigate('/toures')
+                }
+                
             })
-            .catch(err => console.error(err))
+            .catch(err => {
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: {err},
+                  });
+            })
     }
     return (
         <div className="lg:p-10 p-5 flex flex-col justify-center items-center">
