@@ -12,7 +12,7 @@ const Blogs = () => {
     return (
         <div>
             <div>
-                <h2 className="text-3xl font-secondary text-center pt-5">Our Latest Blogs</h2>
+                <h2 className="text-3xl font-secondary text-center">Our Latest Blogs</h2>
             </div>
             <div className="grid lg:grid-cols-3 gap-5 container mx-auto lg:py-10 p-5">
             {

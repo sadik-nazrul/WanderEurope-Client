@@ -23,7 +23,6 @@ const UpdatePlace = () => {
         const shortDesc = form.shortDesc.value;
 
         const updatePlace = { thumb, spotName, country, location, cost, seasonality, time, visitor, shortDesc };
-        console.log(updatePlace);
 
         fetch(`https://wandereurope-server.vercel.app/updateplace/${_id}`, {
             method: 'PUT',

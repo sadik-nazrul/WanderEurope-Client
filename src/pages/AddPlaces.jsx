@@ -25,7 +25,6 @@ const AddPlaces = () => {
         const userName = user.displayName;
 
         const addPlace = { thumb, spotName, country, location, cost, seasonality, time, visitor, shortDesc, userEmail, userName };
-        console.log(addPlace);
 
         fetch('https://wandereurope-server.vercel.app/places', {
             method: 'POST',
@@ -42,9 +41,14 @@ const AddPlaces = () => {
                         text: "Your Place Successfully added",
                         icon: "success"
                     });
+                    form.reset();
                 }
             })
-            .catch(err => console.error(err))
+            .catch(err => Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: {err},
+              }))
     }
     return (
         <div className="lg:p-10 p-5 flex flex-col justify-center items-center">
