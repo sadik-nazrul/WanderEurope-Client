@@ -1,8 +1,15 @@
-# React + Vite
+# WanderEurope
+- [@Live site](https://wandereurope-58208.web.app/)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Features:
+- Anyone can create, delete, update tourist spots by create a account
+- Places filte by Country
+- User can see his own added place in his dashboard
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+packages:
+- [@AOS](https://michalsnik.github.io/aos/) for animate on scroll
+- [@PropTypes](https://www.npmjs.com/package/prop-types) for Prop type validation
+- [@SweetAler](https://sweetalert2.github.io/) for Show Alert box
+- [@Swiper](https://swiperjs.com/react) for carousel
+- [@Tooltip](https://react-tooltip.com/) for Show tooltip
+- [@Spinners](https://www.davidhu.io/react-spinners/) for Show Spinner in loading stage
