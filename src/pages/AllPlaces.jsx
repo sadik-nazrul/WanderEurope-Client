@@ -2,6 +2,8 @@ import { useLoaderData } from "react-router-dom";
 import Place from "../components/Place";
 
 
+
+
 const AllPlaces = () => {
     const loadPlaces = useLoaderData();
     return (
@@ -17,6 +19,7 @@ const AllPlaces = () => {
                     />)
                 }
             </div>
+            
         </div>
     );
 };
