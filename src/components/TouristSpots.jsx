@@ -10,7 +10,6 @@ const TouristSpots = () => {
         .then(data => setPlaces(data))
     },[]);
     const somePlaces = places.slice(0, 4);
-    console.log(somePlaces);
     return (
         <div className="grid lg:grid-cols-4 gap-5 container mx-auto lg:py-10 p-5">
             {

@@ -73,13 +73,6 @@ const Header = () => {
                 } to='/toures'>All Places
             </NavLink>
         </li>
-        <li>
-            <NavLink
-                className={({ isActive }) =>
-                    isActive ? 'bg-primary px-5 py-2 rounded text-white' : ''
-                } to='/blogs'>Blogs
-            </NavLink>
-        </li>
     </>
 
     const userLinks = <>

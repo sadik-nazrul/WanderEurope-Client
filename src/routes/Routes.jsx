@@ -12,6 +12,7 @@ import MyPlaces from "../pages/MyPlaces";
 import UpdatePlace from "../pages/UpdatePlace";
 import AllPlaces from "../pages/AllPlaces";
 import PlaceBycountry from "../pages/PlaceBycountry";
+import BlogDetails from "../pages/BlogDetails";
 
 
 export const router = createBrowserRouter([
@@ -67,6 +68,13 @@ export const router = createBrowserRouter([
                     <PlaceDetails />
                 </PrivateRouts>,
                 loader: ({ params }) => fetch(`https://wandereurope-server.vercel.app/places/${params.id}`)
+            },
+            {
+                path: '/blogs/:id',
+                element: <PrivateRouts>
+                    <BlogDetails />
+                </PrivateRouts>,
+                loader: ({ params }) => fetch(`https://wandereurope-server.vercel.app/blogs/${params.id}`)
             },
             {
                 path: '/myplaces/user/:usernm',

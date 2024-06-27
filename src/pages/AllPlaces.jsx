@@ -19,7 +19,7 @@ const AllPlaces = () => {
                     />)
                 }
             </div>
-            
+
         </div>
     );
 };
