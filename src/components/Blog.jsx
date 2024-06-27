@@ -20,7 +20,7 @@ const Blog = ({ blog }) => {
             <img className=' max-w-full h-52 object-cover w-full rounded' src={featured_img} alt={title} />
             <div className='flex flex-col gap-4'>
                 <h2 className='text-xl font-semibold grow'>{title}</h2>
-                <Link className='text-center text-white font-semibold rounded px-5 py-2 bg-primary' to={`blog/${_id}`}>View Details</Link>
+                <Link className='text-center text-white font-semibold rounded px-5 py-2 bg-primary' to={`blogs/${_id}`}>View Details</Link>
             </div>
         </div>
     );
